@@ -29,13 +29,19 @@ def test_transpose_1x1():
     matrix_1x1 = Matrix([[5]])
     assert matrix_1x1.T() == [[0.5]]
 
-def test_transpose_2x42():
+def test_transpose_2x4():
     matrix_2x4 = Matrix([[5, 4, 1, 7], [2, 1, 3, 5]])
     assert matrix_2x4.T() == [[5, 2], [4, 1], [1, 3], [7, 5]]
 
 def test_transpose_4x3():
     matrix_4x3 = Matrix([[5, 3, 2], [7, 1, 4], [1, 1, 2], [8, 9, 1]])
     assert matrix_4x3.T() == [[5, 7, 1, 8], [3, 1, 1, 9], [2, 4, 2, 1]]
+
+def test_add():
+    matrix_4x3_1 = Matrix([[5, 3, 2], [7, 1, 4], [1, 1, 2], [8, 9, 1]])
+    matrix_4x3_2 = Matrix([[1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1]])
+    results = matrix_4x3_1 + matrix_4x3_2
+    assert results == [[6, 4, 3], [8, 2, 5], [2, 2, 3], [9, 10, 2]]
 
 if __name__ == "__main__":
     # Run the tests
@@ -44,6 +50,9 @@ if __name__ == "__main__":
     test_trace_1x1()
     test_trace_2x2()
     test_inverse_1x1()
-    test_determinant_2x2()
+    test_inverse_2x2()
+    test_transpose_2x4()
+    test_transpose_4x3()
+    test_add()
 
     print("All tests passed")

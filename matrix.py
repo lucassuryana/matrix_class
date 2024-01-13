@@ -84,7 +84,7 @@ class Matrix(object):
             value = [1 / self.g[0][0]]
             inv.append(value)
         else:
-            det = self.determinant(self.g)
+            det = self.determinant()
             val_0_0 = self.g[1][1] / det
             val_0_1 = -self.g[0][1] / det
             val_1_0 = -self.g[1][0] / det
@@ -152,6 +152,18 @@ class Matrix(object):
         #   
         # TODO - your code here
         #
+
+        added_state = []
+        num_rows = len(self.g)
+        num_columns = len(self.g[0])
+        for i in range(0, num_rows):
+            rows = []
+            for j in range(0, num_columns):
+                val = self.g[i][j] + other[i][j]
+                rows.append(val)
+            added_state.append(rows)
+        
+        return added_state
 
     def __neg__(self):
         """
