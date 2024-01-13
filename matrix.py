@@ -40,6 +40,17 @@ class Matrix(object):
             raise(NotImplementedError, "Calculating determinant not implemented for matrices largerer than 2x2.")
         
         # TODO - your code here
+        if self.h == 1:
+            det = self.g[0][0]
+        else:
+            a = self.g[0][0]
+            b = self.g[0][1]
+            c = self.g[1][0]
+            d = self.g[1][1]
+            det = (a * d) - (b * c)
+
+        return det
+
 
     def trace(self):
         """
@@ -60,6 +71,7 @@ class Matrix(object):
             raise(NotImplementedError, "inversion not implemented for matrices larger than 2x2.")
 
         # TODO - your code here
+        
 
     def T(self):
         """
