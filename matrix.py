@@ -60,6 +60,11 @@ class Matrix(object):
             raise(ValueError, "Cannot calculate the trace of a non-square matrix.")
 
         # TODO - your code here
+        trc = 0
+        for i in range(0,range(self.g[0])):
+            trc += self.g[i][i]
+        
+        return trc
 
     def inverse(self):
         """
