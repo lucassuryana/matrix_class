@@ -98,6 +98,17 @@ class Matrix(object):
         """
         Returns a transposed copy of this Matrix.
         """
+        transpose = []
+        num_rows = len(self.g)
+        num_columns = len(self.g[0])
+        for i in range(0,num_columns):
+            rows = []
+            for j in range(0, num_rows):
+                rows.append(self.g[j][i])
+            transpose.append(rows)
+
+        return transpose
+
         # TODO - your code here
 
     def is_square(self):
