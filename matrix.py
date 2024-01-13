@@ -61,8 +61,11 @@ class Matrix(object):
 
         # TODO - your code here
         trc = 0
-        for i in range(0,range(self.g[0])):
-            trc += self.g[i][i]
+        if len(self.g) == 1:
+            trc = self.g[0][0]
+        else:
+            for i in range(0,len(self.g[0])):
+                trc += self.g[i][i]
         
         return trc
 
@@ -76,7 +79,20 @@ class Matrix(object):
             raise(NotImplementedError, "inversion not implemented for matrices larger than 2x2.")
 
         # TODO - your code here
-        
+        inv = []
+        if len(self.g) == 1:
+            value = [1 / self.g[0][0]]
+            inv.append(value)
+        else:
+            det = self.determinant(self.g)
+            val_0_0 = self.g[1][1] / det
+            val_0_1 = -self.g[0][1] / det
+            val_1_0 = -self.g[1][0] / det
+            val_1_1 = self[0][0] / det
+
+            inv = [[val_0_0, val_0_1],[val_1_0, val_1_1]]
+                
+        return inv
 
     def T(self):
         """
