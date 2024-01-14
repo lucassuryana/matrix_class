@@ -18,6 +18,31 @@ def identity(n):
             I.g[i][i] = 1.0
         return I
 
+def transpose(matrix):
+    matrix_transpose = []
+    num_rows = len(matrix[:])
+    num_columns = len(matrix[0])
+    for i in range(0,num_columns):
+        rows = []
+        for j in range(0,num_rows):
+            rows.append(matrix[j][i])
+        matrix_transpose.append(rows)
+            
+    
+    return matrix_transpose
+
+def dot_product(vector_one, vector_two):
+    
+    product = []
+    
+    for i in range(0,len(vector_one)):
+        sum_point = vector_one[i] * vector_two[i]
+        product.append(sum_point)
+    
+    results = sum(product)
+    
+    return results
+
 class Matrix(object):
 
     # Constructor
@@ -92,7 +117,7 @@ class Matrix(object):
 
             inv = [[val_0_0, val_0_1],[val_1_0, val_1_1]]
                 
-        return inv
+        return Matrix(inv)
 
     def T(self):
         """
@@ -107,7 +132,7 @@ class Matrix(object):
                 rows.append(self.g[j][i])
             transpose.append(rows)
 
-        return transpose
+        return Matrix(transpose)
 
         # TODO - your code here
 
@@ -218,17 +243,20 @@ class Matrix(object):
         #   
         # TODO - your code here
         #
-        mul_state = []
-        num_rows = len(self.g)
-        num_columns = len(self.g[0])
-        for i in range(0, num_rows):
-            rows = []
-            for j in range(0, num_columns):
-                val = self.g[i][j] * other[i][j]
-                rows.append(val)
-            mul_state.append(rows)
+        product = []
         
-        return Matrix(mul_state)     
+        transpose_matrixB = transpose(other)
+        num_rows_A = len(self.g)
+        num_rows_B = len(transpose_matrixB)
+        
+        for i in range(num_rows_A):
+            row = []
+            for j in range(num_rows_B):
+                dot_result = dot_product(self.g[i], transpose_matrixB[j])
+                row.append(dot_result)
+            product.append(row)
+        
+        return Matrix(product)
 
     def __rmul__(self, other):
         """
