@@ -43,6 +43,28 @@ def test_add():
     results = matrix_4x3_1 + matrix_4x3_2
     assert results == [[6, 4, 3], [8, 2, 5], [2, 2, 3], [9, 10, 2]]
 
+def test_neg():
+    matrix_4x3 = Matrix([[1, 0],
+        [0, 1]])
+    assert -matrix_4x3 == [[-1, 0],
+        [0, -1]]
+
+def test_sub():
+    matrix_4x3_1 = Matrix([[5, 3, 2], [7, 1, 4], [1, 1, 2], [8, 9, 1]])
+    matrix_4x3_2 = Matrix([[1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1]])
+    results = matrix_4x3_1 - matrix_4x3_2
+    assert results == [[4, 2, 1], [6, 0, 3], [0, 0, 1], [7, 8, 0]]
+
+def test_mul():
+    matrix_4x3_1 = Matrix([[5, 3, 2], [7, 1, 4], [1, 1, 2], [8, 9, 1]])
+    matrix_4x3_2 = Matrix([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]])
+    results = matrix_4x3_1 * matrix_4x3_2
+    assert results == [[10, 6, 4], [14, 2, 8], [2, 2, 4], [16, 18, 2]]
+
+def test_rmul():
+    matrix_4x3_1 = Matrix([[5, 3, 2], [7, 1, 4], [1, 1, 2], [8, 9, 1]])
+    assert 2 * matrix_4x3_1 == [[10, 6, 4], [14, 2, 8], [2, 2, 4], [16, 18, 2]]
+
 if __name__ == "__main__":
     # Run the tests
     test_determinant_1x1()
@@ -54,5 +76,9 @@ if __name__ == "__main__":
     test_transpose_2x4()
     test_transpose_4x3()
     test_add()
+    test_neg()
+    test_sub()
+    test_mul()
+    test_rmul()
 
     print("All tests passed")

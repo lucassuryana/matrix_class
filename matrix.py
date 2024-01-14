@@ -163,7 +163,7 @@ class Matrix(object):
                 rows.append(val)
             added_state.append(rows)
         
-        return added_state
+        return Matrix(added_state)
 
     def __neg__(self):
         """
@@ -180,6 +180,17 @@ class Matrix(object):
         #   
         # TODO - your code here
         #
+        new_val = []
+        num_rows = len(self.g)
+        num_columns = len(self.g[0])
+        for i in range(0, num_rows):
+            rows = []
+            for j in range(0, num_columns):
+                val = -self.g[i][j]
+                rows.append(val)
+            new_val.append(rows)
+        
+        return Matrix(new_val)       
 
     def __sub__(self, other):
         """
@@ -188,6 +199,17 @@ class Matrix(object):
         #   
         # TODO - your code here
         #
+        neg_state = []
+        num_rows = len(self.g)
+        num_columns = len(self.g[0])
+        for i in range(0, num_rows):
+            rows = []
+            for j in range(0, num_columns):
+                val = self.g[i][j] - other[i][j]
+                rows.append(val)
+            neg_state.append(rows)
+        
+        return Matrix(neg_state)
 
     def __mul__(self, other):
         """
@@ -196,6 +218,17 @@ class Matrix(object):
         #   
         # TODO - your code here
         #
+        mul_state = []
+        num_rows = len(self.g)
+        num_columns = len(self.g[0])
+        for i in range(0, num_rows):
+            rows = []
+            for j in range(0, num_columns):
+                val = self.g[i][j] * other[i][j]
+                rows.append(val)
+            mul_state.append(rows)
+        
+        return Matrix(mul_state)     
 
     def __rmul__(self, other):
         """
@@ -214,4 +247,15 @@ class Matrix(object):
             #   
             # TODO - your code here
             #
+            rmul_state = []
+            num_rows = len(self.g)
+            num_columns = len(self.g[0])
+            for i in range(0, num_rows):
+                rows = []
+                for j in range(0, num_columns):
+                    val = self.g[i][j] * other
+                    rows.append(val)
+                rmul_state.append(rows)
             
+            return Matrix(rmul_state)     
+                
